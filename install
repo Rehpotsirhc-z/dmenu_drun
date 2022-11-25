@@ -1,0 +1,9 @@
+#!/bin/bash
+scriptpath="$(dirname $(readlink -f $0))"
+
+if [ -f "$scriptpath/target/release/dmenu_drun" ]; then
+    sudo cp "$scriptpath/target/release/dmenu_drun" /usr/bin/dmenu_drun
+    sudo chmod +x /usr/bin/dmenu_drun
+else
+    echo "$scriptpath/target/release/dmenu_drun does not exist"
+fi
