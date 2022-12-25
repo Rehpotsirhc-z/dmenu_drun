@@ -3,7 +3,7 @@ use std::process::Command;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let finalargs: String = format!(
+    let dmenuargs: String = format!(
         "--dmenu=dmenu {}",
         args[1..]
             .join(" ")
@@ -31,12 +31,12 @@ fn main() {
             .replace(">", r"\>")
             .replace("?", r"\?")
     );
-
-    //    println!("{:?}", format!("{}", finalargs));
-    //    println!("{:?}", str::replace(&finalargs, " ", "_"));
+    let termargs: String = env::var("TERM").unwrap_or("alacritty".to_string());
 
     let _ = Command::new("j4-dmenu-desktop")
-        .arg(finalargs)
+        .arg(dmenuargs)
+        .arg("-t")
+        .arg(termargs)
         .status()
         .expect("Failed to execute command");
 }
