@@ -1,4 +1,8 @@
 #!/bin/bash
+# SPDX-FileCopyrightText: 2025 Rehpotsirhc
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 scriptpath="$(dirname $(readlink -f $0))"
 
 if [[ -f "$scriptpath/target/release/dmenu_drun" ]]; then
